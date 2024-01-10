@@ -25,9 +25,9 @@ class Section:
 	"""Name of the section"""
 	interfaces: List[str] = ["proprietary_interface1", "proprietary_interface2"]
 	"""List of interfaces"""
-	hardware_modules: List[str] = ["proprietary_module1", "proprietary_module2"]
+	hardware_modules: List[str] = []
 	"""List of hardware modules IDs"""
-	apps: List[str] = ["proprietary_app1", "proprietary_app2"]
+	apps: List[str] = []
 	"""List of app names"""
 	binaries: List[str] = ["proprietary_binary1", "proprietary_binary2"]
 	"""List of binaries/services"""
