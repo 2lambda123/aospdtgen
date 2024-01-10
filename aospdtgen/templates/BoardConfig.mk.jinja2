@@ -144,7 +144,7 @@ BOARD_{{ device_info.manufacturer|upper }}_DYNAMIC_PARTITIONS_SIZE := 9122611200
 {% endif %}
 
 # Platform
-TARGET_BOARD_PLATFORM := {{ device_info.platform }}
+TARGET_BOARD_PLATFORM := {{ device_info.device_board_platform }}
 
 # Properties{{ '\n' }}
 {%- for partition in partitions.get_all_partitions() %}
