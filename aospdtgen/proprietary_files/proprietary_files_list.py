@@ -8,7 +8,14 @@ from sebaubuntu_libs.libandroid.partitions.partition import AndroidPartition
 from sebaubuntu_libs.libandroid.partitions.partition_model import TREBLE
 from typing import List, Optional
 
-from aospdtgen.proprietary_files.ignore import is_blob_allowed
+from aospdtgen.proprietary_files.ignore import is_blob_allowed, IGNORE_BINARIES
+
+# List of ignored binaries
+IGNORE_BINARIES = [
+    'binary1',
+    'binary2',
+    # Add missing or relevant binaries here
+]
 from aospdtgen.proprietary_files.section import Section, sections
 
 class ProprietaryFilesList:
@@ -26,7 +33,7 @@ class ProprietaryFilesList:
 			for file in partition.files:
 				file_relative = file.relative_to(partition.path)
 				# Filter out ignored files
-				if is_blob_allowed(file_relative):
+				if is_blob_allowed(file_relative) and file not in IGNORE_BINARIES:
 					files.append(file)
 
 			for section in self.sections:
