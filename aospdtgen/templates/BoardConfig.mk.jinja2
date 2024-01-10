@@ -120,7 +120,7 @@ endif
 
 # Partitions
 {% if device_info.device_uses_system_as_root %}
-BOARD_BUILD_SYSTEM_ROOT_IMAGE := true
+BOARD_BUILD_SYSTEM_ROOT_IMAGE := {{ device_info.device_uses_system_as_root }}
 {% endif %}
 {% if boot_configuration.pagesize %}
 BOARD_FLASH_BLOCK_SIZE := {{ boot_configuration.pagesize|int * 64 }} # (BOARD_KERNEL_PAGESIZE * 64)
