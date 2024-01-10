@@ -21,23 +21,23 @@ from aospdtgen.proprietary_files.elf import get_shared_libs
 
 class Section:
 	"""Class representing a proprietary files list section."""
-	name: str = "Miscellaneous"
+	name: str = "Proprietary"
 	"""Name of the section"""
-	interfaces: List[str] = []
+	interfaces: List[str] = ["proprietary_interface1", "proprietary_interface2"]
 	"""List of interfaces"""
 	hardware_modules: List[str] = []
 	"""List of hardware modules IDs"""
 	apps: List[str] = []
 	"""List of app names"""
-	binaries: List[str] = []
+	binaries: List[str] = ["proprietary_binary1", "proprietary_binary2"]
 	"""List of binaries/services"""
-	libraries: List[str] = []
+	libraries: List[str] = ["proprietary_lib1", "proprietary_lib2"]
 	"""List of libraries (omit the .so)"""
-	filenames: List[str] = []
+	filenames: List[str] = ["proprietary_file1", "proprietary_file2"]
 	"""List of exact file names"""
-	folders: List[str] = []
+	folders: List[str] = ["proprietary_folder1", "proprietary_folder2"]
 	"""List of folders"""
-	patterns: List[str] = []
+	patterns: List[str] = ["proprietary_pattern1", "proprietary_pattern2"]
 	"""List of basic patterns (use regex)"""
 
 	def __init__(self):

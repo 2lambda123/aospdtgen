@@ -8,14 +8,23 @@ from sebaubuntu_libs.libandroid.partitions.partition import AndroidPartition
 from sebaubuntu_libs.libandroid.partitions.partition_model import TREBLE
 from typing import List, Optional
 
-from aospdtgen.proprietary_files.ignore import is_blob_allowed
+from aospdtgen.proprietary_files.ignore import is_blob_allowed, IGNORE_BINARIES
+
+# List of ignored binaries
+IGNORE_BINARIES = [
+    'binary1',
+    'binary2',
+    # Add missing or relevant binaries here
+]
 from aospdtgen.proprietary_files.section import Section, sections
+from typing import Dict, List
+from typing import Dict, List
 
 class ProprietaryFilesList:
 	"""Class representing a proprietary files list."""
 	def __init__(self, partitions: List[AndroidPartition]):
 		"""Initialize a new ProprietaryFilesList object."""
-		self.partitions = partitions
+		self.partitions: List[AndroidPartition] = partitions
 
 		self.sections: List[Section] = [section() for section in sections]
 		misc_section = Section()
@@ -26,7 +35,7 @@ class ProprietaryFilesList:
 			for file in partition.files:
 				file_relative = file.relative_to(partition.path)
 				# Filter out ignored files
-				if is_blob_allowed(file_relative):
+				if is_blob_allowed(file_relative) and file not in IGNORE_BINARIES:
 					files.append(file)
 
 			for section in self.sections:
