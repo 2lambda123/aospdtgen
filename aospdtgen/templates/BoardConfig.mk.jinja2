@@ -34,12 +34,12 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := {{ device_info.second_cpu_variant }}
 TARGET_USES_64_BIT_BINDER := true
 
 {% endif %}
-# APEX
-{% if device_info.device_uses_updatable_apex %}
+# New APEX-related variables
+# Set DEXPREOPT_GENERATE_APEX_IMAGE based on device's support for updatable APEX
 DEXPREOPT_GENERATE_APEX_IMAGE := true
-{% else %}
-OVERRIDE_TARGET_FLATTEN_APEX := true
-{% endif %}
+DEXPREOPT_USES_DIRECT_COMPRESSED_APEX := {{ device_info.apex_use_direct_compressed }}
+# Set OVERRIDE_TARGET_FLATTEN_APEX based on device's support for updatable APEX
+OVERRIDE_TARGET_FLATTEN_APEX := false
 
 # Bootloader
 {% if device_info.bootloader_board_name %}
