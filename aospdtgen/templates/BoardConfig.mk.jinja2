@@ -1,6 +1,6 @@
 {% include 'LICENSE.jinja2' %}
 
-DEVICE_PATH := device/{{ device_info.manufacturer }}/{{ device_info.codename }}
+DEVICE_PATH := device/{{ device_info.device_manufacturer }}/{{ device_info.device_codename }}
 
 {% if device_info.device_is_ab %}
 # A/B
@@ -185,5 +185,5 @@ BOARD_AVB_RECOVERY_ROLLBACK_INDEX_LOCATION := 1
 DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/manifest.xml
 
 # Inherit the proprietary files
-include vendor/{{ device_info.manufacturer }}/{{ device_info.codename }}/BoardConfigVendor.mk
+include vendor/{{ device_info.device_manufacturer }}/{{ device_info.device_codename }}/BoardConfigVendor.mk
 
