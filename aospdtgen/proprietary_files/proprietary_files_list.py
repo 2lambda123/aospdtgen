@@ -17,12 +17,14 @@ IGNORE_BINARIES = [
     # Add missing or relevant binaries here
 ]
 from aospdtgen.proprietary_files.section import Section, sections
+from typing import Dict, List
+from typing import Dict, List
 
 class ProprietaryFilesList:
 	"""Class representing a proprietary files list."""
 	def __init__(self, partitions: List[AndroidPartition]):
 		"""Initialize a new ProprietaryFilesList object."""
-		self.partitions = partitions
+		self.partitions: List[AndroidPartition] = partitions
 
 		self.sections: List[Section] = [section() for section in sections]
 		misc_section = Section()
