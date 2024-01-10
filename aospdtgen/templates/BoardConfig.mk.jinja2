@@ -43,9 +43,9 @@ OVERRIDE_TARGET_FLATTEN_APEX := false
 
 # Bootloader
 {% if device_info.bootloader_board_name %}
-TARGET_BOOTLOADER_BOARD_NAME := {{ device_info.bootloader_board_name }}
+TARGET_BOOTLOADER_BOARD_NAME := {{ device_info.bootloader_board_name || 'default_board' }} || 'default_board' }}
 {% endif %}
-TARGET_NO_BOOTLOADER := true
+TARGET_NO_BOOTLOADER := false
 
 {% if device_info.screen_density or device_info.use_vulkan %}
 # Display
